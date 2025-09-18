@@ -4,15 +4,15 @@ import google.generativeai as genai
 from flask import Flask, request, jsonify
 
 # Render 환경 변수에서 Gemini API 키 가져오기
-GENAI_API_KEY = os.environ.get("GENAI_API_KEY")
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 
 # API 키 유효성 검사 (빠른 실패)
-if not GENAI_API_KEY:
-    raise ValueError("GENAI_API_KEY 환경 변수가 설정되지 않았습니다.")
+if not GEMINI_API_KEY:
+    raise ValueError("GEMINI_API_KEY 환경 변수가 설정되지 않았습니다.")
 
 # Gemini 설정
 # 'gemini-1.5-flash' 모델로 전환
-genai.configure(api_key=GENAI_API_KEY)
+genai.configure(api_key=GEMINI_API_KEY)
 model = genai.GenerativeModel(
     "gemini-1.5-flash",
     system_instruction="당신은 사용자의 마음을 편안하게 해주는 마음챙김 전문가 '챗버디'입니다. 따뜻하고 공감적인 태도로 사용자의 고민을 들어주고, 긍정적이고 차분한 조언을 제공합니다. 질문에 직접적인 답을 주기보다는, 사용자가 스스로 답을 찾을 수 있도록 돕는 방식으로 대화해주세요. 대화는 짧고 명확하게 유지합니다."
