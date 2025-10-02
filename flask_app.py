@@ -6,6 +6,10 @@ from flask import Flask, request, jsonify
 # Render 환경 변수에서 Gemini API 키 가져오기
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 
+# 디버그 로그
+# 키가 실제로 로드되었는지 확인 (True 또는 False가 출력)
+print(f"DEBUG: GEMINI_API_KEY successfully retrieved: {bool(GEMINI_API_KEY)}")
+
 # API 키 유효성 검사 (빠른 실패)
 if not GEMINI_API_KEY:
     raise ValueError("GEMINI_API_KEY 환경 변수가 설정되지 않았습니다.")
